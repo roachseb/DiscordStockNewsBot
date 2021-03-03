@@ -6,12 +6,15 @@ from datetime import datetime
 import finnhub
 import json
 
+from ....ConfigLoader.configloader import Configs
+
 
 
 class Commands_Finnhub(): 
     #creates all the wanted events
     def __init__(self,client:Bot):
-        self.finnhub_client = finnhub.Client(api_key="c0t7gbn48v6r4maem16g")
+        self.conf = Configs()
+        self.finnhub_client = finnhub.Client(api_key=self.conf.FINHUB_API_KEY)
 
 
         @client.command(pass_context=True)
